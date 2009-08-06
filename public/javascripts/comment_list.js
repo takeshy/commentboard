@@ -71,7 +71,7 @@ $('register_comment').observe('click',function(){
     $('comment_user_name').style.background="white";
     $('comment_body').style.background="white";
     if(msg == ""){
-      $('comment_body').update("");
+      $('comment_body').value="";
     }
     else
     { 
