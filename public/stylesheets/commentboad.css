@@ -1,0 +1,50 @@
+.commenttop{
+background:#FFFFFF url(/images/comment_top.gif) no-repeat scroll left top;
+height:35px;
+width:530px;
+text-indent:30px;
+}
+.commentmiddle {
+background:#FFFFFF url(/images/comment_middle.gif) repeat-y scroll left bottom;
+padding:10px;
+width:530px;
+}
+.commentbottom {
+background:#FFFFFF url(/images/comment_bottom.gif) no-repeat scroll left bottom;
+height:24px;
+padding-top:10px;
+text-align:center;
+width:530px;
+}
+
+#cmmnt dl {
+margin:0 0 10px;
+}
+.commentmiddle span {
+color:#FF9900;
+}
+.commentmiddle li, p, dl, a {
+  font-size:90%;
+  line-height:1.3;
+}
+.boardtitle{
+  color:white;
+  padding-top:0.5em;
+}
+#usrCmmnt dt
+{
+   font-weight: bold;
+   border-bottom: solid 1px #cccccc;
+   color: #999999;
+   margin-top: 1em;
+	width:500px;
+}
+
+#usrCmmnt dd
+{
+   border: solid 1px #cccccc;
+   padding: 1em;
+   margin-left: 0em;
+   margin-top: 0.5em;
+	width:470px;
+}
