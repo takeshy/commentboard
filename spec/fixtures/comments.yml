@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_name: 父
+  body: いろいろあった
+
+two:
+  user_name: 母
+  body: それは言わない約束

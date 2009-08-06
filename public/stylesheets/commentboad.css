@@ -17,9 +17,6 @@ text-align:center;
 width:530px;
 }
 
-#cmmnt dl {
-margin:0 0 10px;
-}
 .commentmiddle span {
 color:#FF9900;
 }
@@ -31,7 +28,7 @@ color:#FF9900;
   color:white;
   padding-top:0.5em;
 }
-#usrCmmnt dt
+#comment_list dl dt
 {
    font-weight: bold;
    border-bottom: solid 1px #cccccc;
@@ -40,11 +37,37 @@ color:#FF9900;
 	width:500px;
 }
 
-#usrCmmnt dd
+#comment_list dl dd
 {
    border: solid 1px #cccccc;
    padding: 1em;
    margin-left: 0em;
    margin-top: 0.5em;
 	width:470px;
+}
+
+form dl dd
+{
+   margin-left: 0.2em;
+	width:470px;
+}
+form dl dt
+{
+   margin-left: 0.2em;
+	width:470px;
+}
+span.vivid 
+{
+  color:blue;
+  font-weight:bold;
+}
+#register_comment
+{
+  margin-top:10px;
+}
+#error_area
+{
+  font-size:90%;
+  line-height:1.3;
+  color:red;
 }
