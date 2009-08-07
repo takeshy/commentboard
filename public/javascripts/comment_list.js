@@ -1,7 +1,6 @@
 var CommentList = Class.create({
   initialize:function(args){
 	this.id = args.id;
-	this.page_num = args.page_num;
 	this.url = '/comments/list.json';
 	this.dataSet = null;
   if(args.params){
@@ -63,27 +62,47 @@ submit_form:function(form,call_back) {
       });
 }
 });
+
+function date_to_s(dateObj){
+  return dateObj.getFullYear() + "/" + (dateObj.getMonth()+1) + "/" + dateObj.getDate();
+}
+
 document.observe('dom:loaded',function(){
-var c_list = new CommentList({id: "comment_list",page_num:20});
-$('register_comment').observe('click',function(){ 
-  c_list.submit_form($$('form')[0],function(msg){
-    $("error_area").update("");
-    $('comment_user_name').style.background="white";
-    $('comment_body').style.background="white";
-    if(msg == ""){
-      $('comment_body').value="";
-    }
-    else
-    { 
-      if(msg.match(/名前/)){
-        $('comment_user_name').style.background="#fcc";
+  var today = new Date();
+  var start_day = new Date(today.getFullYear(),today.getMonth(),1);
+  var end_day = new Date(today.getFullYear(),today.getMonth(),today.getDate()+1);
+  var c_list = new CommentList({id: "comment_list",params:{from:date_to_s(start_day),to:date_to_s(end_day)}});
+  var update_date_obj = new DateSpan({id:"disp_span",start:{year:-1},
+                                default_start_day:start_day,default_end_day:today});
+
+  $('change_span').observe('click',function(){
+    from = $('start_disp_span_year').value + "/" + $('start_disp_span_month').value + "/" + $('start_disp_span_day').value;
+    to = $('end_disp_span_year').value + "/" + $('end_disp_span_month').value + "/" + 
+      (parseInt($('end_disp_span_day').value)+1);
+
+    c_list.params = {from:from,to:to}
+    c_list.loadData();
+    });
+
+  $('register_comment').observe('click',function(){ 
+    c_list.submit_form($$('form')[0],function(msg){
+      $("error_area").update("");
+      $('comment_user_name').style.background="white";
+      $('comment_body').style.background="white";
+      if(msg == ""){
+        $('comment_body').value="";
       }
-      if(msg.match(/コメント/)){
-        $('comment_body').style.background="#fcc";
+      else
+      { 
+        if(msg.match(/名前/)){
+          $('comment_user_name').style.background="#fcc";
+        }
+        if(msg.match(/コメント/)){
+          $('comment_body').style.background="#fcc";
+        }
+        msg = msg.gsub("\n","<br>");
+        $("error_area").update(msg);
       }
-      msg = msg.gsub("\n","<br>");
-      $("error_area").update(msg);
-    }
-    });});
-$('comment_user_name').focus();
+      });});
+  $('comment_user_name').focus();
 });

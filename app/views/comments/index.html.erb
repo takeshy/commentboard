@@ -4,6 +4,7 @@
     <%= stylesheet_link_tag "commentboard" %>
     <%= javascript_include_tag "prototype" %>
     <%= javascript_include_tag "comment_list" %>
+    <%= javascript_include_tag "dateselect" %>
     <meta http-equiv="Content-Language" content="ja">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   </head>
@@ -13,9 +14,10 @@
         <div class="boardtitle">掲示板</div>
       </div>
       <div class="commentmiddle">
+        表示期間<span id="disp_span"></span><input type="button" id="change_span" value="表示">
+      <% form_for(:comment) do |f| -%>
         <div id="comment_list"></div>
         <div id="error_area"></div>
-        <% form_for(:comment) do |f| -%>
           <dl>
             <dt> <span>▼</span>名前</dt>
             <dd>

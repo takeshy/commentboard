@@ -71,3 +71,12 @@ span.vivid
   line-height:1.3;
   color:red;
 }
+.spaceleft
+{
+  margin-left:200px;
+}
+
+#disp_span span
+{
+  color:black;
+}

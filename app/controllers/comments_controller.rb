@@ -2,7 +2,10 @@ class CommentsController < ApplicationController
   def index
   end
   def list
-   @comments = Comment.find(:all,:order => "created_at ASC")
+   from = Time.parse(params[:from])
+   to = Time.parse(params[:to])
+   @comments = Comment.find(:all,:conditions => ["created_at > :from AND created_at < :to",{:from=>from,:to=>to}],
+                            :order => "created_at ASC")
    @respond = []
    @comments.each_with_index do |comment,i|
      data_set = {}
